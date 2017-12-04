@@ -1,10 +1,11 @@
-import {Component, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
-import {Asset} from './asset.interface';
-import {Observable} from 'rxjs/Observable';
-import {AssetService} from '../../services/asset.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {AssetEditorDialog} from './asset-editor.dialog';
+import {Component, OnDestroy, OnInit, ViewContainerRef} from "@angular/core";
+import {Asset} from "./asset.interface";
+import {Observable} from "rxjs/Observable";
+import {AssetService} from "../../services/asset.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import {AssetEditorDialog} from "./asset-editor.dialog";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'qs-asset-detail',
@@ -25,7 +26,8 @@ export class AssetDetailPage implements OnInit, OnDestroy {
               private router: Router,
               private route: ActivatedRoute,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog,) {
+              private dialog: MdDialog,
+              private location: Location) {
   }
 
   loadAsset(assetNo: string): void {
@@ -55,5 +57,9 @@ export class AssetDetailPage implements OnInit, OnDestroy {
     this.editorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
