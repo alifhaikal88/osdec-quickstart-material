@@ -15,7 +15,7 @@
   <td-layout-card-over>
     <div layout="row" layout-align="start center">
       <div>
-        <md-card-title>Asset {{(asset$|async).assetNo}}</md-card-title>
+        <md-card-title>Asset {{(asset$|async)?.assetNo}}</md-card-title>
         <md-card-subtitle>Asset Detail</md-card-subtitle>
       </div>
     </div>
@@ -31,12 +31,12 @@
           <p class="tc-grey-500">Description :</p>
         </div>
         <div layout="column" flex="70">
-          <p>{{(asset$|async).assetNo}}</p>
-          <p>{{(asset$|async).description}}</p>
+          <p>{{(asset$|async)?.assetNo}}</p>
+          <p>{{(asset$|async)?.description}}</p>
         </div>
       </div>
 
-       <!--maintenance-->
+      <!--maintenance-->
       <h3 md-line flex>
         <span>Maintenance</span>
         <span flex>
@@ -49,8 +49,8 @@
         <div layout="row" flex>
           <td-data-table
             #dataTable
-            [data]="(asset$ | async).maintenances"
-            [columns]="columns"flex>
+            [data]="(asset$ | async)?.maintenances"
+            [columns]="columns" flex>
           </td-data-table>
         </div>
       </div>
